@@ -1,8 +1,11 @@
 import React from "react";
+import Application from "./components/Application/Application";
+
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
+      <Application />
     </div>
   );
 }
