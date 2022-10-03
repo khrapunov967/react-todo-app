@@ -1,11 +1,13 @@
 import React from "react";
-import Application from "./components/Application/Application";
+import Title from "./components/Title/Title";
+import Form from "./UI/Form/Form";
 
 
 function App() {
   return (
     <div className="wrapper">
-      <Application />
+      <Title titleName={"To-Do Application"}/>
+      <Form />
     </div>
   );
 }
