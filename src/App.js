@@ -6,9 +6,9 @@ import TasksSection from "./components/TasksSection/TasksSection"
 
 function App() {
   const [tasks, setTasks] = useState([
-    {id: 1, name: "Feed a dog", completed: false},
-    {id: 2, name: "Read 10 pages of book", completed: false},
-    {id: 3, name: "Clean house", completed: true},
+    {id: 1, name: "Learn React.js", completed: false},
+    {id: 3, name: "Clean house", completed: false},
+    {id: 2, name: "Run 5km", completed: true},
   ]);
 
   return (

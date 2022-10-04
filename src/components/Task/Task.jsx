@@ -4,10 +4,17 @@ import "./Task.scss";
 const Task = ({task, setTasks, tasks}) => {
 
     const completeTask = (task) => {
-        setTasks(tasks.map(item => {
-            if (item.id === task.id) item.completed = true;
-            return item;
-        }));
+
+        const newTasks = tasks.map(item => (item.id === task.id) ? {...item, completed: true} : item);
+
+        const objectOfArrays = newTasks.reduce((acc, curr) => {
+            if (curr.completed) acc.done.push(curr);
+            else acc.todo.push(curr);
+
+            return acc;
+        }, {todo: [], done: []});
+
+        setTasks([...objectOfArrays.todo, ...objectOfArrays.done]);
     };
 
     const removeTask = (task) => {
