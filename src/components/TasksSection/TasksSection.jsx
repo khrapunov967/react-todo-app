@@ -3,10 +3,13 @@ import Task from "../Task/Task";
 
 import "./TasksSection.scss";
 
-const TasksSection = ({tasks}) => {
+const TasksSection = ({tasks, setTasks}) => {
     return (
         <section className="tasks-section">
-            {tasks.map(task => <Task task={task} key={task.id}/>)}
+            {
+                !tasks.length ? <p className="no-tasks">No Tasks!</p> :
+                tasks.map(task => <Task task={task} tasks={tasks} key={task.id} setTasks={setTasks}/>)
+            }
         </section> 
     );
 }

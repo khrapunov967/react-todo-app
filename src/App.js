@@ -15,7 +15,7 @@ function App() {
     <div className="wrapper">
       <Title titleName={"To-Do Application"}/>
       <Form tasks={tasks} setTasks={setTasks}/>
-      <TasksSection tasks={tasks}/>
+      <TasksSection tasks={tasks} setTasks={setTasks}/>
     </div>
   );
 }
