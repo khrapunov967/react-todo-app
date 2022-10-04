@@ -1,10 +1,13 @@
 import React from "react";
+import Task from "../Task/Task";
 
 import "./TasksSection.scss";
 
-const TasksSection = () => {
+const TasksSection = ({tasks}) => {
     return (
-        <div></div> // WORK ON THAT
+        <section className="tasks-section">
+            {tasks.map(task => <Task task={task} key={task.id}/>)}
+        </section> 
     );
 }
 

@@ -1,0 +1,62 @@
+%icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6em;
+    background: #fffaf6;
+    border: solid 2px #B09B71;
+    border-radius: .5em;
+    width: 314px;
+    min-width: 100px;
+
+    &.completed {
+        opacity: 0.5;
+    }
+
+    &__name {
+        font-size: 1.2em;
+        color: #483434;
+        max-width: 170px;
+    }
+
+    .icon-container {
+        display: flex;
+        gap: .5em;
+
+        &__complete-icon {
+            @extend %icon;
+            
+            svg {
+                fill: #9FC088;
+                transition: all 0.15s ease-in-out;
+            }
+            
+            &:hover {
+                svg {
+                    fill: #98b882;
+                }
+            }
+        }
+
+        &__remove-icon {
+            @extend %icon;
+
+            svg {
+                fill: #FF5C58;
+                transition: all 0.15s ease-in-out;
+            }
+
+            &:hover {
+                svg {
+                    fill: #f75552;
+                }
+            }
+        }
+    }
+}
