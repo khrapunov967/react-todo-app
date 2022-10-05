@@ -8,7 +8,7 @@ const TasksSection = ({tasks, setTasks}) => {
         <section className="tasks-section">
             {
                 !tasks.length ? <p className="no-tasks">No Tasks!</p> :
-                tasks.map(task => <Task task={task} tasks={tasks} key={task.id} setTasks={setTasks}/>)
+                tasks.map(task => <Task task={task} tasks={tasks} key={task.id} setTasks={setTasks} />)
             }
         </section> 
     );

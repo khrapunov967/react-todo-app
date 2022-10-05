@@ -4,18 +4,15 @@ import "./Task.scss";
 const Task = ({task, setTasks, tasks}) => {
 
     const completeTask = (task) => {
-
         const newTasks = tasks.map(item => (item.id === task.id) ? {...item, completed: true} : item);
 
         const objectOfArrays = newTasks.reduce((acc, curr) => {
-            if (curr.completed) acc.done.push(curr);
-            else acc.todo.push(curr);
-
+            (curr.completed) ? acc.done.push(curr) : acc.todo.push(curr);
             return acc;
         }, {todo: [], done: []});
 
         setTasks([...objectOfArrays.todo, ...objectOfArrays.done]);
-    };
+    };  
 
     const removeTask = (task) => {
         setTasks(tasks.filter(item => item.id !== task.id));
@@ -24,6 +21,7 @@ const Task = ({task, setTasks, tasks}) => {
     return (
         <div className={!task.completed ? "task" : "task completed"}>
             <div className="task__name">{task.name}</div>
+            
             <div className="icon-container">
                 {
                     task.completed ? "" : 

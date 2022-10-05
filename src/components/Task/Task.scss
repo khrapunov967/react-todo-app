@@ -12,8 +12,8 @@
     background: #fffaf6;
     border: solid 2px #B09B71;
     border-radius: .5em;
-    width: 314px;
-    min-width: 100px;
+    width: 100%;
+    max-width: 314px;
 
     &.completed {
         opacity: 0.5;
@@ -23,7 +23,9 @@
     &__name {
         font-size: 1.2em;
         color: #483434;
-        max-width: 170px;
+        max-width: 200px;
+        overflow: hidden;
+        word-break: break-all;
     }
 
     .icon-container {

@@ -5,11 +5,7 @@ import TasksSection from "./components/TasksSection/TasksSection"
 
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {id: 1, name: "Learn React.js", completed: false},
-    {id: 3, name: "Clean house", completed: false},
-    {id: 2, name: "Run 5km", completed: true},
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   return (
     <div className="wrapper">
