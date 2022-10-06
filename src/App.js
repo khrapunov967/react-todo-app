@@ -6,7 +6,7 @@ import TasksSection from "./components/TasksSection/TasksSection"
 
 function App() {
   const [tasks, setTasks] = useState([
-    {id: 1, name: "learn mongodb", completed: false},
+    {id: 1, name: "learn react.js", completed: false},
     {id: 2, name: "read 10 pages of a book", completed: false},
     {id: 3, name: "feed a dog", completed: false},
     {id: 4, name: "clean house", completed: true},

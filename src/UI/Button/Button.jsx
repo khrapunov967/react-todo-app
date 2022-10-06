@@ -3,7 +3,9 @@ import "./Button.scss";
 
 const Button = ({buttonName, onClick}) => {
     return (
-        <button className="button" onClick={onClick}>{buttonName}</button>
+        <button className="button" onClick={onClick}>
+            {buttonName}
+        </button>
     );
 }
 

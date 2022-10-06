@@ -3,20 +3,30 @@ import "./Task.scss";
 
 const Task = ({task, setTasks, tasks}) => {
 
-    const completeTask = (task) => {
-        const newTasks = tasks.map(item => (item.id === task.id) ? {...item, completed: true} : item);
 
-        const objectOfArrays = newTasks.reduce((acc, curr) => {
-            (curr.completed) ? acc.done.push(curr) : acc.todo.push(curr);
-            return acc;
+
+    const completeTask = (task) => {
+        const updatedTasks = tasks.map(item => (item.id === task.id) ? {...item, completed: true} : item);
+
+
+        const doneAndTodoTasks = updatedTasks.reduce((accObj, currObj) => {
+            if (currObj.completed) accObj.done.push(currObj);
+            else accObj.todo.push(currObj);
+
+            return accObj
         }, {todo: [], done: []});
 
-        setTasks([...objectOfArrays.todo, ...objectOfArrays.done]);
+
+        setTasks([...doneAndTodoTasks.todo, ...doneAndTodoTasks.done]);
     };  
+
+
 
     const removeTask = (task) => {
         setTasks(tasks.filter(item => item.id !== task.id));
     };
+
+
 
     return (
         <div className={!task.completed ? "task" : "task completed"}>
