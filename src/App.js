@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
 import Title from "./components/Title/Title";
-import Form from "./UI/Form/Form";
-import TasksSection from "./components/TasksSection/TasksSection"
+import Form from "./components/UI/Form/Form";
+import TasksSection from "./components/TodosSection/TodosSection"
 
 
 function App() {
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="wrapper">
@@ -18,13 +18,13 @@ function App() {
       />
 
       <Form 
-        tasks={tasks} 
-        setTasks={setTasks}
+        todos={todos} 
+        setTodos={setTodos}
       />
 
       <TasksSection 
-        tasks={tasks} 
-        setTasks={setTasks}
+        todos={todos} 
+        setTodos={setTodos}
       />
     </div>
   );
