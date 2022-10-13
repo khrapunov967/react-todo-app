@@ -10,7 +10,7 @@ const Form = ({tasks, setTasks}) => {
     const addNewTask = (e) => {
         e.preventDefault();
         
-        if (taskName) {
+        if (taskName.trim()) {
             const newTask = {id: Date.now(), name: taskName, completed: false};
             setTasks([...tasks, newTask]);
             setTaskName("");
