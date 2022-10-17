@@ -5,11 +5,11 @@ import TasksSection from "./components/TodosSection/TodosSection"
 
 
 function App() {
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos])
+  }, [todos]);
 
   return (
     <div className="wrapper">

@@ -4,10 +4,10 @@ import "./TodosSection.scss";
 
 const TasksSection = ({todos, setTodos}) => {
     return (
-        <section className="tasks-section">
+        <section className="todos-section">
             {
-                !todos.length ? <p className="no-tasks">No Tasks!</p> 
-                : todos.map(todo => <Task todo={todo} todos={todos} key={todo.id} setTodos={setTodos} />)
+                (todos && todos.length) ?  todos.map(todo => <Task todo={todo} todos={todos} key={todo.id} setTodos={setTodos} />)
+                                        :  <p className="no-tasks">No Todos!</p>
             }
         </section> 
     );
