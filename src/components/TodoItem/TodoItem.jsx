@@ -35,8 +35,8 @@ const Task = ({todos, todo, setTodos}) => {
     };
 
     return (
-        <div className={!todo.completed ? "task" : "task completed"}>
-            <div className="task__name">{todo.title}</div>
+        <div className={!todo.completed ? "todo" : "todo completed"}>
+            <div className="todo__name">{todo.title}</div>
             
             <div className="icon-container">
                 {

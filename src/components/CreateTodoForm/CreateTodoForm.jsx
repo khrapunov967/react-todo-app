@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import Button from "../MyButton/MyButton";
-import Input from "../MyInput/MyInput";
-import "./Form.scss";
+import React, {useEffect, useState} from "react";
+import Button from "../UI/MyButton/MyButton";
+import Input from "../UI/MyInput/MyInput";
+import "./CreateTodoForm.scss";
 
 
 const Form = ({todos, setTodos}) => {
     const [todoTitle, setTodoTitle] = useState("");
 
-    const addNewTodo = (e) => {
+    const createNewTodo = (e) => {
         e.preventDefault();
         
         if (todoTitle.trim()) {
@@ -27,7 +27,7 @@ const Form = ({todos, setTodos}) => {
 
             <Button 
                 buttonName={"Create"} 
-                onClick={addNewTodo}
+                onClick={createNewTodo}
             />
         </form>
     )

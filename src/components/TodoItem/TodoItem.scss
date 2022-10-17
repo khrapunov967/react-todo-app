@@ -4,7 +4,7 @@
     cursor: pointer;
 }
 
-.task {
+.todo {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,7 +13,7 @@
     border: solid 2px #B09B71;
     border-radius: .5em;
     width: 100%;
-    max-width: 314px;
+    max-width: 500px;
 
     &.completed {
         opacity: 0.5;
