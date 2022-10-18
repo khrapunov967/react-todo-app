@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Button from "../UI/MyButton/MyButton";
 import Input from "../UI/MyInput/MyInput";
 import "./CreateTodoForm.scss";

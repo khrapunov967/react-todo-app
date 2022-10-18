@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeadTitle from "./components/HeadTitle/HeadTitle";
 import CreateTodoForm from "./components/CreateTodoForm/CreateTodoForm";
-import TasksSection from "./components/TodosSection/TodosSection"
+import TodosSection from "./components/TodosSection/TodosSection"
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         setTodos={setTodos}
       />
 
-      <TasksSection 
+      <TodosSection 
         todos={todos} 
         setTodos={setTodos}
       />
