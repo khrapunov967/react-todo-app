@@ -1,0 +1,22 @@
+.check-button {
+    width: 24px;
+    height: 24px;
+    background-color: #4e4e4e;
+    border: solid 1px #4e4e4e;
+    border-radius: 50%;
+    padding: 2px;
+    cursor: pointer;
+
+    &__check-icon {
+        svg {
+            path {
+                color: #fff;
+            }
+        }
+    }
+
+    &.unchecked {
+        border: solid 2px #cbcbcb;
+        background: transparent;
+    }
+}

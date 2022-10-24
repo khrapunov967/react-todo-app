@@ -1,0 +1,21 @@
+.menu-icon {
+    width: 35px;
+    cursor: pointer;
+    position: relative;
+
+    svg {
+        path {
+            color: #c4c4c4;
+            transition: all 0.2s linear;
+        }
+    }
+
+    &:hover {
+        svg {
+            path {
+                transition: all 0.2s linear;
+                color: #4e4e4e;
+            }
+        }
+    }
+}

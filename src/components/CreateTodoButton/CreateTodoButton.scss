@@ -1,0 +1,22 @@
+.create-todo-button {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: .6em;
+    border-radius: .6em;
+    gap: 10px;
+    cursor: pointer;
+
+    &__title {
+        font-size: 1.2em;
+        color: #3d82eb;
+        transition: all 0.2s linear;
+    }
+
+    &:hover {
+        .create-todo-button__title {
+            transition: all 0.2s linear;
+            color: #3366b3;
+        }
+    }
+}

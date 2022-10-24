@@ -1,32 +1,21 @@
-import React, { useEffect, useState } from "react";
-import HeadTitle from "./components/HeadTitle/HeadTitle";
-import CreateTodoForm from "./components/CreateTodoForm/CreateTodoForm";
-import TodosSection from "./components/TodosSection/TodosSection"
+import React from "react";
+import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
+import Header from "./components/Header/Header";
+import TodosContainer from "./components/TodosContainer/TodosContainer";
+
 
 
 function App() {
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
+  
   return (
     <div className="wrapper">
-      <HeadTitle 
-        titleName={"To-Do App"} 
-      />
+      <div className="app">
+        <Header />
 
-      <CreateTodoForm 
-        todos={todos} 
-        setTodos={setTodos}
-      />
-
-      <TodosSection 
-        todos={todos} 
-        setTodos={setTodos}
-      />
-    </div>
+        <TodosContainer />
+        <CreateTodoButton />
+      </div>
+    </div>  
   );
 }
 

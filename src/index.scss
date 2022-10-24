@@ -5,20 +5,29 @@
   list-style: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   outline: none;
+  color: #323232;
 }
 
 body {
-  background-color: #F5E8C7;
-  padding: 0em .3em;
+  padding-top: 3em;
+  background-color: #fff;
 }
 
 .wrapper {
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 714px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1em;
+  margin: 0 auto;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 30px 20px;
+}
+
