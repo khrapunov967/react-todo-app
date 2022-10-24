@@ -1,5 +1,5 @@
 import React from "react";
-import MenuIcon from "../UI/MenuIcon/MenuIcon";
+import MenuButton from "../UI/MenuButton/MenuButton";
 import "./Header.scss";
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
         <header className="header">
             <h1 className="header__title">To-Do App</h1>
 
-            <MenuIcon />
+            <MenuButton />
         </header>
     );
 };

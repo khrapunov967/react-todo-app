@@ -7,7 +7,7 @@ const TodoItem = ({completed}) => {
     return (
         <div className="todo-item">
             <div className="todo-item__left-container">
-                <CheckButton isChecked={true} />
+                <CheckButton isChecked={completed} />
 
                 <p className={completed ? "todo-item__todo-title completed" : "todo-item__todo-title"}>Build a modern To-do App</p>
             </div>
