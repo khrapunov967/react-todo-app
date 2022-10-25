@@ -19,7 +19,7 @@ const TodoItem = ({todo}) => {
             </div>
 
             <div className="todo-item__right-container">
-                <RemoveIcon removeTodo={() => dispatch({type: "removeTodo", payload: todo.id})}/>
+                <RemoveIcon removeTodo={(e) => dispatch({type: "removeTodo", payload: {id: todo.id, event: e}})}/>
             </div>
         </div>
     );

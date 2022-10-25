@@ -1,5 +1,15 @@
 export default (state, action) => {
 
+    const todos = state.todos;
+
+    const getCompletedTodos = () => {
+        return todos.filter(todo => todo.completed)
+    };
+
+    const getInProgressTodos = () => {
+        return todos.filter(todo => !todo.completed);
+    };
+
     switch(action.type) {
         case "completeTodo":
             return {
@@ -8,25 +18,30 @@ export default (state, action) => {
             };
 
         case "removeTodo":
+            action.payload.event.stopPropagation();
+
             return {
                 ...state, 
-                todos: state.todos.filter(todo => todo.id !== action.payload)
+                todos: state.todos.filter(todo => todo.id !== action.payload.id)
             };
 
         case "showCreateTodoForm":
+            action.payload.event.stopPropagation();
+
             return {
                 ...state,
-                isCreateTodoFormVisible: true
+                isCreateTodoFormVisible: action.payload.value
             };
 
         case "onChangeTodoTitle":
-            console.log(action.payload)
             return {
                 ...state, 
                 todoTitle: action.payload
             }
 
         case "createTodo":
+            action.payload.stopPropagation();
+
             if (state.todoTitle.trim()) {
                 const newTodo = {
                     id: Date.now(),
@@ -49,6 +64,14 @@ export default (state, action) => {
             return {
                 ...state, 
                 isSideMenuVisible: action.payload
+            };
+
+        case "filterTodos":
+            return {
+                ...state,
+                todos: action.payload.way === "Completed" ? getCompletedTodos() : 
+                       action.payload.way === "In Progress" ? getInProgressTodos() : state.todos,
+                selectItems: state.selectItems.map(item => item.id === action.payload.id ? {...item, active: true} : {...item, active: false})
             };
 
         default:

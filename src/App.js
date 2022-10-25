@@ -14,6 +14,11 @@ function App() {
       {id: 2, title: "Build a modern Todo App", completed: false},
       {id: 3, title: "Build a modern Todo App", completed: false},
     ],
+    selectItems: [
+      {id: 1, value: "Completed", active: false},
+      {id: 2, value: "In Progress", active: false},
+      {id: 3, value: "All", active: true},
+    ],
     isSideMenuVisible: false,
     isCreateTodoFormVisible: false,
     todoTitle: ""
@@ -21,12 +26,12 @@ function App() {
   
   return (
     <Context.Provider value={{state, dispatch}}>
-      <div className="wrapper">
+      <div className="wrapper" onClick={(e) => dispatch({type: "onWrapperClick", dispatch: e})}>
         <CreateTodoForm />
         <div className="app">
           <Header />
           <TodosContainer />
-          <CreateTodoButton onClick={() => dispatch({type: "showCreateTodoForm", payload: true})}/>
+          <CreateTodoButton onClick={(e) => dispatch({type: "showCreateTodoForm", payload: {value: true, event: e}})}/>
         </div>
       </div>
     </Context.Provider>  

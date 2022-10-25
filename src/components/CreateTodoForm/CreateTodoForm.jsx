@@ -16,7 +16,7 @@ const CreateTodoForm = () => {
                 onChange={(e) => dispatch({type: "onChangeTodoTitle", payload: e.target.value})}
             />
 
-            <button className="create-todo-form__create-button" onClick={() => dispatch({type: "createTodo"})}>
+            <button className="create-todo-form__create-button" onClick={(e) => dispatch({type: "createTodo", payload: e})}>
                 Create
             </button>
         </form>

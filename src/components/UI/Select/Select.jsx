@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../../context";
 import "./Select.scss";
 
 const Select = ({isVisible}) => {
+
+    const {state, dispatch} = useContext(Context);
+
     return (
         <div className={isVisible ? "select" : "select hidden"}>
-            <div className="select__select-item">Completed</div>
-            <div className="select__select-item active">In Progress</div>
-            <div className="select__select-item">All</div>
+            {
+                state.selectItems.map(item => {
+                    return <div 
+                                className={item.active ? "select__select-item active" : "select__select-item"}
+                                onClick={() => dispatch({type: "filterTodos", payload: {way: item.value, id: item.id}})}
+                                key={item.id}
+                            >
+                                {item.value}
+                            </div>
+                })
+            }
         </div>
     );
 };
