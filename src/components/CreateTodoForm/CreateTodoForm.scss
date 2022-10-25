@@ -1,0 +1,45 @@
+@keyframes show-form {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.create-todo-form {
+    display: flex;
+    width: 100%;
+    margin-bottom: 4em;
+    padding: .8em;
+    border-radius: 1em;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    animation: show-form 0.3s linear forwards;
+
+    &__todo-title-input {
+        width: inherit;
+        color: #4e4e4e;
+        font-size: 1.2em;
+        border: none;
+        opacity: 0.6;
+    }
+
+    &__create-button {
+        border: none;
+        font-size: 1.2em;
+        color: #3d82eb;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    &.hidden {
+        display: none;
+    }
+}

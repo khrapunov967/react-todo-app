@@ -5,7 +5,17 @@
 
     svg {
         path {
+            transition: all 0.2s linear;
             color: #eb3d3d;
+        }
+    }
+
+    &:hover {
+        svg {
+            path {
+                transition: all 0.2s linear;
+                color: #ff5858;
+            }
         }
     }
 }

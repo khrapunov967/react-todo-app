@@ -2,10 +2,11 @@
     width: 24px;
     height: 24px;
     background-color: #4e4e4e;
-    border: solid 1px #4e4e4e;
+    border: solid 2px #4e4e4e;
     border-radius: 50%;
     padding: 2px;
     cursor: pointer;
+    transition: all 0.3s linear;
 
     &__check-icon {
         svg {
@@ -18,5 +19,11 @@
     &.unchecked {
         border: solid 2px #cbcbcb;
         background: transparent;
+        transition: all 0.3s linear;
+
+        &:hover {
+            transition: all 0.3s linear;
+            border: solid 2px #4e4e4e;
+        }
     }
 }
