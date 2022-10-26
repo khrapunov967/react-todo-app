@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useMemo, useReducer } from "react";
 import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
 import CreateTodoForm from "./components/CreateTodoForm/CreateTodoForm";
 import Header from "./components/Header/Header";
@@ -23,9 +23,37 @@ function App() {
     isCreateTodoFormVisible: false,
     todoTitle: ""
   });
+
+  const todos = state.todos;
+
+  const filteredTodos = useMemo(() => {
+
+    const getFilteredTodos = (way) => {
+      switch(way) {
+        case "Completed":
+          console.log("GET COMPLETED TODOS");
+          return todos.filter(todo => todo.completed);
+
+        case "In Progress":
+          return todos.filter(todo => !todo.completed);
+        default:
+          return todos;
+      }
+    }
+
+
+    for (let i = 0; i < state.selectItems.length; i++) {
+      if (state.selectItems[i].active) {
+        return getFilteredTodos(state.selectItems[i].value);
+      }
+    }
+
+  }, [state.selectItems, todos]);
+
+  
   
   return (
-    <Context.Provider value={{state, dispatch}}>
+    <Context.Provider value={{state, dispatch, filteredTodos}}>
       <div className="wrapper" onClick={(e) => dispatch({type: "onWrapperClick", dispatch: e})}>
         <CreateTodoForm />
         <div className="app">

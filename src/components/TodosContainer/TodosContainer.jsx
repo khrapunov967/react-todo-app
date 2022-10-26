@@ -5,12 +5,12 @@ import "./TodosContainer.scss";
 
 const TodosContainer = () => {
 
-    const {state} = useContext(Context);
+    const {state, filteredTodos} = useContext(Context);
 
     return (
         <section className="todos-container">
             {
-                state.todos.map(todo => <TodoItem todo={todo} key={todo.id}/>)
+                filteredTodos.map(todo => <TodoItem todo={todo} key={todo.id}/>)
             }
         </section>
     );

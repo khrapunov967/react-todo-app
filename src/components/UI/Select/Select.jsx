@@ -12,7 +12,7 @@ const Select = ({isVisible}) => {
                 state.selectItems.map(item => {
                     return <div 
                                 className={item.active ? "select__select-item active" : "select__select-item"}
-                                onClick={() => dispatch({type: "filterTodos", payload: {way: item.value, id: item.id}})}
+                                onClick={() => dispatch({type: "filterTodos", payload: item.id})}
                                 key={item.id}
                             >
                                 {item.value}

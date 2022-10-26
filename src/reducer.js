@@ -1,15 +1,5 @@
 export default (state, action) => {
 
-    const todos = state.todos;
-
-    const getCompletedTodos = () => {
-        return todos.filter(todo => todo.completed)
-    };
-
-    const getInProgressTodos = () => {
-        return todos.filter(todo => !todo.completed);
-    };
-
     switch(action.type) {
         case "completeTodo":
             return {
@@ -40,7 +30,7 @@ export default (state, action) => {
             }
 
         case "createTodo":
-            action.payload.stopPropagation();
+            action.payload.preventDefault();
 
             if (state.todoTitle.trim()) {
                 const newTodo = {
@@ -69,10 +59,8 @@ export default (state, action) => {
         case "filterTodos":
             return {
                 ...state,
-                todos: action.payload.way === "Completed" ? getCompletedTodos() : 
-                       action.payload.way === "In Progress" ? getInProgressTodos() : state.todos,
-                selectItems: state.selectItems.map(item => item.id === action.payload.id ? {...item, active: true} : {...item, active: false})
-            };
+                selectItems: state.selectItems.map(item => item.id === action.payload ? {...item, active: true} : {...item, active: false})
+            }
 
         default:
             return state;
