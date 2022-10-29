@@ -1,4 +1,4 @@
-import React, { useMemo, useReducer } from "react";
+import React, { useEffect, useMemo, useReducer } from "react";
 import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
 import CreateTodoForm from "./components/CreateTodoForm/CreateTodoForm";
 import Header from "./components/Header/Header";
@@ -8,12 +8,8 @@ import reducer from "./reducer";
 
 function App() {
 
-  const [state, dispatch] = useReducer(reducer, {
-    todos: [
-      {id: 1, title: "Build a modern Todo App", completed: false},
-      {id: 2, title: "Build a modern Todo App", completed: false},
-      {id: 3, title: "Build a modern Todo App", completed: false},
-    ],
+  const initialState = {
+    todos: JSON.parse(localStorage.getItem("todos")) || [],
     selectItems: [
       {id: 1, value: "Completed", active: false},
       {id: 2, value: "In Progress", active: false},
@@ -22,9 +18,9 @@ function App() {
     isSideMenuVisible: false,
     isCreateTodoFormVisible: false,
     todoTitle: ""
-  });
+  };
 
-  const todos = state.todos;
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const filteredTodos = useMemo(() => {
 
@@ -32,12 +28,12 @@ function App() {
       switch(way) {
         case "Completed":
           console.log("GET COMPLETED TODOS");
-          return todos.filter(todo => todo.completed);
+          return state.todos.filter(todo => todo.completed);
 
         case "In Progress":
-          return todos.filter(todo => !todo.completed);
+          return state.todos.filter(todo => !todo.completed);
         default:
-          return todos;
+          return state.todos;
       }
     }
 
@@ -48,13 +44,16 @@ function App() {
       }
     }
 
-  }, [state.selectItems, todos]);
+  }, [state.selectItems, state.todos]);
 
-  
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(state.todos))
+  }, [state.todos]);
   
   return (
     <Context.Provider value={{state, dispatch, filteredTodos}}>
-      <div className="wrapper" onClick={(e) => dispatch({type: "onWrapperClick", dispatch: e})}>
+      <div className="wrapper">
         <CreateTodoForm />
         <div className="app">
           <Header />
