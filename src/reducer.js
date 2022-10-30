@@ -1,7 +1,7 @@
 export default (state, action) => {
 
     switch(action.type) {
-        case "completeTodo":
+        case "toggleTodo":
             return {
                 ...state, 
                 todos: state.todos.map(todo => todo.id === action.payload.id ? {...todo, completed: action.payload.val} : todo)
@@ -21,6 +21,13 @@ export default (state, action) => {
             return {
                 ...state,
                 isCreateTodoFormVisible: action.payload.value
+            };
+
+        case "hideCreateTodoForm":
+            return {
+                ...state,
+                isCreateTodoFormVisible: false,
+                todoTitle: ""
             };
 
         case "onChangeTodoTitle":

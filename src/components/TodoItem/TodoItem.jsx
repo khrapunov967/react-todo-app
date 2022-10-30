@@ -13,7 +13,7 @@ const TodoItem = ({todo}) => {
             <div className="todo-item__left-container">
                 <CheckButton 
                     isChecked={todo.completed} 
-                    onClick={() => dispatch({type: "completeTodo", payload: {id: todo.id, val: !todo.completed}})}/>
+                    onClick={() => dispatch({type: "toggleTodo", payload: {id: todo.id, val: !todo.completed}})}/>
 
                 <p className={todo.completed ? "todo-item__todo-title completed" : "todo-item__todo-title"}>{todo.title}</p>
             </div>

@@ -22,6 +22,8 @@
     left: 0;
     z-index: 20;
     animation: show-form 0.3s linear forwards;
+    gap: 2px;
+    align-items: center;
 
     &__todo-title-input {
         width: inherit;

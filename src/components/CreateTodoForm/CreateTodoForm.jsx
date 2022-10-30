@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../context";
+import CloseButton from "../UI/CloseButton/CloseButton"
 import "./CreateTodoForm.scss";
 
 const CreateTodoForm = () => {
@@ -8,6 +9,7 @@ const CreateTodoForm = () => {
 
     return (
         <form onKeyDown={(e) => dispatch({action: "createTodo", payload: {event: e}})} action="#" className={state.isCreateTodoFormVisible ? "create-todo-form" : "create-todo-form hidden"}>
+            <CloseButton onClick={() => dispatch({type: "hideCreateTodoForm"})}/>
             <input 
                 value={state.todoTitle}
                 type="text" 
@@ -19,6 +21,7 @@ const CreateTodoForm = () => {
             <button className="create-todo-form__create-button" onClick={(e) => dispatch({type: "createTodo", payload: e})}>
                 Create
             </button>
+
         </form>
     );
 };
