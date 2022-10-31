@@ -27,16 +27,15 @@ function App() {
     const getFilteredTodos = (way) => {
       switch(way) {
         case "Completed":
-          console.log("GET COMPLETED TODOS");
           return state.todos.filter(todo => todo.completed);
 
         case "In Progress":
           return state.todos.filter(todo => !todo.completed);
+
         default:
           return state.todos;
       }
     }
-
 
     for (let i = 0; i < state.selectItems.length; i++) {
       if (state.selectItems[i].active) {
@@ -55,9 +54,13 @@ function App() {
     <Context.Provider value={{state, dispatch, filteredTodos}}>
       <div className="wrapper">
         <CreateTodoForm />
+
         <div className="app">
           <Header />
-          <TodosContainer />
+
+          <TodosContainer /> 
+
+          {/* MAKE TOGGLE CREATE TODO FORM !!! */}
           <CreateTodoButton onClick={(e) => dispatch({type: "showCreateTodoForm", payload: {value: true, event: e}})}/>
         </div>
       </div>
