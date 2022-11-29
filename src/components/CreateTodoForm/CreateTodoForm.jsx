@@ -1,24 +1,43 @@
-import React, { useContext } from "react";
-import { Context } from "../../context";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { hideForm } from "../../store/createTodoFormSlice";
+import { addTodo } from "../../store/todoSlice";
 import CloseButton from "../UI/CloseButton/CloseButton"
 import "./CreateTodoForm.scss";
 
 const CreateTodoForm = () => {
 
-    const {state, dispatch} = useContext(Context);
+    const [title, setTitle] = useState("");
+    const isFormVisible = useSelector(state => state.createTodoFormSlice.isFormVisible);
+    const dispatch = useDispatch();
+
+    const createNewTodo = (e) => {
+        e.preventDefault();
+        dispatch(addTodo({title}));
+        dispatch(hideForm());
+        setTitle("");
+    };
+
+    const closeForm = () => {
+        dispatch(hideForm());
+        setTitle("");
+    };
 
     return (
-        <form onKeyDown={(e) => dispatch({action: "createTodo", payload: {event: e}})} action="#" className={state.isCreateTodoFormVisible ? "create-todo-form" : "create-todo-form hidden"}>
-            <CloseButton onClick={() => dispatch({type: "hideCreateTodoForm"})}/>
+        <form action="#" className={isFormVisible ? "create-todo-form" : "create-todo-form hidden"}>
+            <CloseButton 
+                onClick={closeForm}
+            />
+
             <input 
-                value={state.todoTitle}
+                value={title}
                 type="text" 
                 placeholder="Todo title... (then press Enter)" 
                 className="create-todo-form__todo-title-input"
-                onChange={(e) => dispatch({type: "onChangeTodoTitle", payload: e.target.value})}
+                onChange={(e) => setTitle(e.target.value)}
             />
 
-            <button className="create-todo-form__create-button" onClick={(e) => dispatch({type: "createTodo", payload: e})}>
+            <button className="create-todo-form__create-button" onClick={createNewTodo}>
                 Create
             </button>
 

@@ -7,7 +7,9 @@ const CreateTodoButton = ({...props}) => {
         <div className="create-todo-button" {...props}>
             <AddIcon />
 
-            <p className="create-todo-button__title">Create New Item</p>
+            <p className="create-todo-button__title">
+                Create New Item
+            </p>
         </div>
     );  
 };

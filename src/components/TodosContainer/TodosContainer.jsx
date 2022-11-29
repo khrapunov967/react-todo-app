@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
+import React  from "react";
+import { useSelector } from "react-redux";
 import TodoItem from "../TodoItem/TodoItem";
-import { Context } from "../../context";
 import "./TodosContainer.scss";
 
 const TodosContainer = () => {
 
-    const {state, filteredTodos} = useContext(Context);
+    const todos = useSelector(state => state.todoSlice.todos)
 
     return (
         <section className="todos-container">
             {
-                filteredTodos.map(todo => <TodoItem todo={todo} key={todo.id}/>)
+                todos.map(todo => <TodoItem todo={todo} key={todo.id}/>)
             }
         </section>
     );

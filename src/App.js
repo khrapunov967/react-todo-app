@@ -1,70 +1,64 @@
-import React, { useEffect, useMemo, useReducer } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
 import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
 import CreateTodoForm from "./components/CreateTodoForm/CreateTodoForm";
 import Header from "./components/Header/Header";
 import TodosContainer from "./components/TodosContainer/TodosContainer";
-import { Context } from "./context";
-import reducer from "./reducer";
+import { showForm } from "./store/createTodoFormSlice";
 
 function App() {
 
-  const initialState = {
-    todos: JSON.parse(localStorage.getItem("todos")) || [],
-    selectItems: [
-      {id: 1, value: "Completed", active: false},
-      {id: 2, value: "In Progress", active: false},
-      {id: 3, value: "All", active: true},
-    ],
-    isSideMenuVisible: false,
-    isCreateTodoFormVisible: false,
-    todoTitle: ""
-  };
+  const dispatch = useDispatch();
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const initialState = {
+  //   todos: JSON.parse(localStorage.getItem("todos")) || [],
+  //   selectItems: [
+  //     {id: 1, value: "Completed", active: false},
+  //     {id: 2, value: "In Progress", active: false},
+  //     {id: 3, value: "All", active: true},
+  //   ],
+  //   isSideMenuVisible: false,
+  //   isCreateTodoFormVisible: false,
+  //   todoTitle: ""
+  // };
 
-  const filteredTodos = useMemo(() => {
+  // const filteredTodos = useMemo(() => {
 
-    const getFilteredTodos = (way) => {
-      switch(way) {
-        case "Completed":
-          return state.todos.filter(todo => todo.completed);
+  //   const getFilteredTodos = (way) => {
+  //     switch(way) {
+  //       case "Completed":
+  //         return state.todos.filter(todo => todo.completed);
 
-        case "In Progress":
-          return state.todos.filter(todo => !todo.completed);
+  //       case "In Progress":
+  //         return state.todos.filter(todo => !todo.completed);
 
-        default:
-          return state.todos;
-      }
-    }
+  //       default:
+  //         return state.todos;
+  //     }
+  //   }
 
-    for (let i = 0; i < state.selectItems.length; i++) {
-      if (state.selectItems[i].active) {
-        return getFilteredTodos(state.selectItems[i].value);
-      }
-    }
+  //   for (let i = 0; i < state.selectItems.length; i++) {
+  //     if (state.selectItems[i].active) {
+  //       return getFilteredTodos(state.selectItems[i].value);
+  //     }
+  //   }
 
-  }, [state.selectItems, state.todos]);
-
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(state.todos))
-  }, [state.todos]);
+  // }, [state.selectItems, state.todos]);
   
   return (
-    <Context.Provider value={{state, dispatch, filteredTodos}}>
-      <div className="wrapper">
-        <CreateTodoForm />
+    <div className="wrapper">
+      <CreateTodoForm />
 
-        <div className="app">
-          <Header />
+      <div className="app">
+        <Header />
 
-          <TodosContainer /> 
+        <TodosContainer /> 
 
-          {/* MAKE TOGGLE CREATE TODO FORM !!! */}
-          <CreateTodoButton onClick={(e) => dispatch({type: "showCreateTodoForm", payload: {value: true, event: e}})}/>
-        </div>
+        <CreateTodoButton 
+          onClick={(e) => dispatch(showForm())}
+        />
       </div>
-    </Context.Provider>  
+    </div>
   );
 }
 
