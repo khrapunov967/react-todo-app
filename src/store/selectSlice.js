@@ -5,9 +5,9 @@ const selectSlice = createSlice({
     initialState: {
         isSelectVisible: false,
         selectItems: [
-            {id: 1, value: "Completed", active: false},
-            {id: 2, value: "In Progress", active: false},
-            {id: 3, value: "All", active: true},
+            {id: 1, value: "COMPLETED", title: "Completed", active: false},
+            {id: 2, value: "IN PROGRESS", title: "In Progress", active: false},
+            {id: 3, value: "ALL", title: "All", active: true},
         ],
     },
     reducers: {
@@ -17,9 +17,25 @@ const selectSlice = createSlice({
         
         hideSelect(state) {
             state.isSelectVisible = false;
+        },
+
+        changeSelectItem(state, action) {
+            state.selectItems = state.selectItems.map(item => {
+                if (item.value === action.payload.value) {
+                    return {
+                        ...item,
+                        active: true
+                    }
+                } else {
+                    return {
+                        ...item,
+                        active: false
+                    }
+                }
+            });
         }
     }
 });
 
-export const { showSelect, hideSelect } = selectSlice.actions;
+export const { showSelect, hideSelect, changeSelectItem } = selectSlice.actions;
 export default selectSlice.reducer;
